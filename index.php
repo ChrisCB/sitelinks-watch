@@ -22,11 +22,10 @@
 			- Add multiple searches (UK, US, DE & AU)
 			- Add graceful handling if the previous day's file can't be found
 			- Inline styles on the table (thank you Gmail)
-			- Make recipient email addresses parameters
 		
 		*/
 		
-		$recipients = "chris.reynolds.uk@gmail.com , chris@cleverbiscuit.com";
+		$recipients = "chris.reynolds.uk@gmail.com, chris@cleverbiscuit.com";
 		$keyword = "ebay";
 		
 		//1. Call the required libraries
@@ -77,7 +76,7 @@
 		//echo "Yesterday file name:" . $yesterdayFile . "<br>" . "Today is " . $todaysFile; 	    			// Echo file names. For testing.																		
 		//4. Check the returned strings are the same vs. last check	
 						
-		//$diffTable = Diff::toTable(Diff::compareFiles($yesterdayFile, $todaysFile));							// Using the Class.Diff library called in section 1
+		$diffTable = Diff::toTable(Diff::compareFiles($yesterdayFile, $todaysFile));							// Using the Class.Diff library called in section 1
 		//echo $diffTable;																						// Echo the diff table. For testing.	
 		
 		$yesterdaySHA = sha1_file('03-04-2015.txt');
