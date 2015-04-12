@@ -122,13 +122,13 @@
 				
 					if ($previousDay == 1) {
 						
-						$stickerForGrammer = "yesterday. <br>";
+						$sticklerForGrammer = "yesterday. <br>";
 					} else {
 						
-						$stickerForGrammer = $previousDay . ' day\'s ago.<br>';
+						$sticklerForGrammer = $previousDay . ' day\'s ago.<br>';
 					}
 					
-				echo "No change to the " . $checks[$row][0] . " sitelinks since last check: " . $stickerForGrammer;		// Condition executes when no changes. No email sent.
+				echo "No change to the " . $checks[$row][0] . " sitelinks since last check: " . $sticklerForGrammer;		// Condition executes when no changes. No email sent.
 				
 				
 				
@@ -138,8 +138,8 @@
 			
 				$headers = "MIME-Version: 1.0" . "\r\n";
 				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-				//$headers .= 'From: <chris.reynolds.>' . "\r\n";
-				$headers .= 'Cc: chrisreynolds@ebay.com ' . "\r\n";
+				$headers .= 'From: <chris.reynolds.uk@gmail.com>' . "\r\n";
+				$headers .= 'Cc: chrisr@cleverbiscuit.com ' . "\r\n";
 			
 				$msg = 	"<style>
 					.diff td {
