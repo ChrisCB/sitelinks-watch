@@ -5,9 +5,11 @@
 		--------
 		
 		Description
-		A script to check daily whether Google sitelinks have changed and send an email if they do.
+		A script to check daily whether Google brand term sitelinks have changed, and send an email if they do.
 		
-		Dependendencies on http://simplehtmldom.sourceforge.net/ & http://code.stephenmorley.org/php/diff-implementation/. 
+		Dependendencies
+		- http://simplehtmldom.sourceforge.net/ 
+		- http://code.stephenmorley.org/php/diff-implementation/. 
 		
 		Requires daily cron job: 
 			crontab -e 
@@ -104,7 +106,6 @@
 					
 				//echo "what happens when yesterday does exist";
 			}
-			
 			
 			$fh = fopen($todaysFile, 'w') or die("Bugger, can't open the file. Check file permissions etc.");		// Create a file with today's date
 			fwrite($fh, $concatLink);																				// Write in today's $concatLink values
