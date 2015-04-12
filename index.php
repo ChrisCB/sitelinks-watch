@@ -24,7 +24,6 @@
 		
 	
 		Features to add:
-			- Put the 
 			- Improve deliverabilty on mail function
 			- Put files neatly in specific folders
 			- Add graceful handling if the previous day's file can't be found
@@ -41,9 +40,9 @@
 		$checks = array
 			  (
 			  array("UK","co.uk","en", "GB"),
-			  //array("Germany", "de", "de","DE"),
-			  //array("Australia", "com.au", "en", "AU"),
-			  //array("US", "com", "en", "US")
+			  array("Germany", "de", "de","DE"),
+			  array("Australia", "com.au", "en", "AU"),
+			  array("US", "com", "en", "US")
 			  );
    
 		//1. Call the required libraries
@@ -53,21 +52,21 @@
 	
 		//2. Scrape the URLs and write them to an array
 		
-		//$n = 0; 
-		//foreach ($checks as $check) {$n++;}			// Count the number of checks to run (counts the array)
+		$n = 0; 
+		foreach ($checks as $check) {$n++;}			// Count the number of checks to run (counts the array)
+	
+			for ($row = 0; $row < $n; $row++) {
 			
-		for ($i = 0; $i < 1; $i++) {
-			
-			$in = str_replace(' ','+',$keyword); 				    // space is a +
-			$url = "https://www.google.". $checks[$row][1] . "/search?num=10&pws=1&gws_rd=cr&hl=" . $checks[$row][2] . "&gl=" . $checks[$row][3] . "&q=" . $keyword . "&oq="  . $keyword;
-			//echo $url . "<br>";									// Echo the URL constructed. For testing
+				$in = str_replace(' ','+',$keyword); 				    // space is a +
+				$url = "https://www.google.". $checks[$row][1] . "/search?num=10&pws=1&gws_rd=cr&hl=" . $checks[$row][2] . "&gl=" . $checks[$row][3] . "&q=" . $keyword . "&oq="  . $keyword;
+				//echo $url . "<br>";									// Echo the URL constructed. For testing
 															
-			$html = file_get_html($url); 							// Write the HTML returned to the $HTML variable
-			//echo $html; 											// View the actual markup returned by the 'file_get_html'. For testing.
+				$html = file_get_html($url); 							// Write the HTML returned to the $HTML variable
+				//echo $html; 											// View the actual markup returned by the 'file_get_html'. For testing.
 			
-			$concatLink = NULL;
-			$siteLinks = $html->find('h3.r a.sla'); 				// Select all <a> with a tags with a class of 'sla', inside an <h3> with class 'r' (how Google marks-up site links).
-			foreach ($siteLinks as $siteLink) {
+				$concatLink = NULL;
+				$siteLinks = $html->find('h3.r a.sla'); 				// Select all <a> with a tags with a class of 'sla', inside an <h3> with class 'r' (how Google marks-up site links).
+				foreach ($siteLinks as $siteLink) {
 				    //$title = trim($siteLink->plaintext);			// Grab link title from the array. Turned off by default.
 				    $link  = trim($siteLink->href);
 				
@@ -87,7 +86,7 @@
 			
 			//3. Write the today's values to a file
 			
-			//$countryVar = $checks[$row][3];
+			$countryVar = $checks[$row][3];
 			//$todaysFile = $countryVar . '/' . $countryVar  . "-" . date('d-m-Y').'.txt';	
 			//$yesterdayFile = $countryVar . '/' .$countryVar . "-" . date('d-m-Y',strtotime("-1 days")).'.txt';												// Build filename	
 			
